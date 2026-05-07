@@ -1,0 +1,240 @@
+<ng-container *transloco="let t">
+    <div class="home-page">
+        @if (isLoading) {
+            <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+        }
+
+        <section class="profile-card" [class.profile-card--loading]="isLoading">
+            <div class="profile-card__top">
+                <div class="profile-flip" [attr.aria-label]="t('home.profile.imageAriaLabel')">
+                    <div class="profile-flip__inner">
+                        <div class="profile-flip__face profile-flip__face--front">
+                            <img
+                                src="images/profile/profile1.png"
+                                alt="Kornélia Mezei"
+                                class="profile-flip__image"
+                                (load)="onProfileImageLoad()"
+                                (error)="onProfileImageLoad()"
+                            />
+                        </div>
+
+                        <div class="profile-flip__face profile-flip__face--back">
+                            <img
+                                src="images/profile/profile2.png"
+                                alt="Kornélia Mezei"
+                                class="profile-flip__image"
+                                (load)="onProfileImageLoad()"
+                                (error)="onProfileImageLoad()"
+                            />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="profile-card__identity">
+                    <h1 class="profile-card__name">
+                        Kornélia Mezei
+                    </h1>
+
+                    <p class="profile-card__role">
+                        {{ t('home.profile.role') }}
+                    </p>
+                </div>
+
+                <div class="profile-card__actions">
+                    @for (socialLink of socialLinks; track socialLink.key) {
+                        @if (socialLink.type === 'dialog') {
+                            <button
+                                type="button"
+                                class="social-link"
+                                [attr.aria-label]="t(socialLink.ariaLabelKey)"
+                                (click)="openSocialLink(socialLink)"
+                            >
+                                <img
+                                    [src]="socialLink.iconPath"
+                                    [alt]="t(socialLink.labelKey)"
+                                    class="social-link__icon"
+                                />
+                            </button>
+                        } @else {
+                            <a
+                                [href]="socialLink.href"
+                                [attr.target]="socialLink.target"
+                                [attr.rel]="socialLink.rel"
+                                [attr.aria-label]="t(socialLink.ariaLabelKey)"
+                                class="social-link"
+                            >
+                                <img
+                                    [src]="socialLink.iconPath"
+                                    [alt]="t(socialLink.labelKey)"
+                                    class="social-link__icon"
+                                />
+                            </a>
+                        }
+                    }
+                </div>
+            </div>
+
+            <div class="profile-card__details">
+                @for (detail of profileDetails; track detail.key) {
+                    <div class="detail-row">
+                        <span class="detail-row__label">
+                            {{ t(detail.labelKey) }}
+                        </span>
+
+                        <span class="detail-row__value">
+                            {{ t(detail.valueKey) }}
+                        </span>
+                    </div>
+                }
+            </div>
+        </section>
+
+        <app-project></app-project>
+
+        <section class="journey-section journey-section--desktop">
+            <div class="journey-header">
+                <h2 class="journey-header__title journey-header__title--left">
+                    {{ t('home.timeline.timelineEducation.title') }}
+                </h2>
+
+                <h2 class="journey-header__title journey-header__title--right">
+                    {{ t('home.timeline.timelineCareer.title') }}
+                </h2>
+            </div>
+
+            <div class="journey-timeline">
+                @for (item of mergedTimelineItems; track item.key) {
+                    <article
+                        class="journey-item"
+                        [class.journey-item--left]="item.side === 'left'"
+                        [class.journey-item--right]="item.side === 'right'"
+                    >
+                        <div class="journey-item__marker">
+                            <span class="journey-item__date">
+                                {{ t(item.timeKey) }}
+                            </span>
+                        </div>
+
+                        <div class="journey-item__content">
+                            <h3 class="journey-item__title">
+                                {{ t(item.roleKey ?? item.titleKey!) }}
+                            </h3>
+
+                            @if (item.roleKey && item.titleKey) {
+                                <p class="journey-item__subtitle">
+                                    {{ t(item.titleKey) }}
+                                </p>
+                            }
+
+                            <div
+                                class="journey-item__description"
+                                [class.journey-item__description--expanded]="isTimelineItemExpanded(item.key)"
+                            >
+                                {{ t(item.descKey) }}
+                            </div>
+
+                            <button
+                                type="button"
+                                class="timeline-read-more-button"
+                                (click)="toggleTimelineItem(item.key)"
+                            >
+                                {{ isTimelineItemExpanded(item.key) ? t('home.timeline.showLess') : t('home.timeline.readMore') }}
+                            </button>
+                        </div>
+                    </article>
+                }
+            </div>
+        </section>
+        <section class="mobile-journey-section">
+            <section class="mobile-timeline-block">
+                <h2 class="mobile-timeline-block__title">
+                    {{ t('home.timeline.timelineCareer.title') }}
+                </h2>
+
+                <div class="mobile-timeline">
+                    @for (item of careerTimelineItems; track item.key) {
+                        <article class="mobile-timeline-item">
+                            <div class="mobile-timeline-item__marker">
+                                <span class="mobile-timeline-item__date">
+                                    {{ t(item.timeKey) }}
+                                </span>
+                            </div>
+
+                            <div class="mobile-timeline-item__content">
+                                <h3 class="mobile-timeline-item__title">
+                                    {{ t(item.roleKey ?? item.titleKey!) }}
+                                </h3>
+
+                                @if (item.roleKey && item.titleKey) {
+                                    <p class="mobile-timeline-item__subtitle">
+                                        {{ t(item.titleKey) }}
+                                    </p>
+                                }
+
+                                <div
+                                    class="mobile-timeline-item__description"
+                                    [class.mobile-timeline-item__description--expanded]="isTimelineItemExpanded(item.key)"
+                                >
+                                    {{ t(item.descKey) }}
+                                </div>
+
+                                <button
+                                    type="button"
+                                    class="timeline-read-more-button"
+                                    (click)="toggleTimelineItem(item.key)"
+                                >
+                                    {{ isTimelineItemExpanded(item.key) ? t('home.timeline.showLess') : t('home.timeline.readMore') }}
+                                </button>
+                            </div>
+                        </article>
+                    }
+                </div>
+            </section>
+            <section class="mobile-timeline-block">
+                <h2 class="mobile-timeline-block__title">
+                    {{ t('home.timeline.timelineEducation.title') }}
+                </h2>
+
+                <div class="mobile-timeline">
+                    @for (item of educationTimelineItems; track item.key) {
+                        <article class="mobile-timeline-item">
+                            <div class="mobile-timeline-item__marker">
+                                <span class="mobile-timeline-item__date">
+                                    {{ t(item.timeKey) }}
+                                </span>
+                            </div>
+
+                            <div class="mobile-timeline-item__content">
+                                <h3 class="mobile-timeline-item__title">
+                                    {{ t(item.roleKey ?? item.titleKey!) }}
+                                </h3>
+
+                                @if (item.roleKey && item.titleKey) {
+                                    <p class="mobile-timeline-item__subtitle">
+                                        {{ t(item.titleKey) }}
+                                    </p>
+                                }
+
+                                <div
+                                    class="mobile-timeline-item__description"
+                                    [class.mobile-timeline-item__description--expanded]="isTimelineItemExpanded(item.key)"
+                                >
+                                    {{ t(item.descKey) }}
+                                </div>
+
+                                <button
+                                    type="button"
+                                    class="timeline-read-more-button"
+                                    (click)="toggleTimelineItem(item.key)"
+                                >
+                                    {{ isTimelineItemExpanded(item.key) ? t('home.timeline.showLess') : t('home.timeline.readMore') }}
+                                </button>
+                            </div>
+                        </article>
+                    }
+                </div>
+            </section>
+        </section>
+
+    </div>
+</ng-container>

@@ -1,0 +1,514 @@
+{
+    "error": {
+        "title": "Oops!",
+        "subtitle": "This page you are looking for could not be found.",
+        "buttonLabel": "Back to Home"
+    },
+    "layout": {
+        "contact": "Contact",
+        "dialog": {
+            "title": "Contact via Email",
+            "question": "Would you like to open your Gmail and compose a message to the address below?",
+            "cancel": "Cancel",
+            "open": "Open Gmail"
+        },
+        "home": "Home",
+        "preferences": "Preferences",
+        "certificates": "Certificates",
+        "built": "Built with Angular and Tailwind"
+    },
+    "certi": {
+        "sort": "Sort by",
+        "search": "Search certificates",
+        "removeTerm": "Remove this search term.",
+        "filters": "Filters",
+        "tag": "Filter by Tag",
+        "clearTag": "Clear every active filter, search term, and sorting option.",
+        "clear": "Clear all",
+        "searchTag": "Search tags",
+        "moreTag": "Show every available tag.",
+        "lessTag": "Collapse the tag list.",
+        "showAll": "Show all",
+        "showLess": "Show less",
+        "company": "Filter by Company",
+        "all": "All",
+        "moreCompany": "Show every available company.",
+        "lessCompany": "Collapse the company list.",
+        "type": "Type",
+        "mode": "Exam Mode",
+        "title": "Certificates",
+        "items": " items",
+        "online": "Online",
+        "offline": "In-person",
+        "result": "Result",
+        "certi": "Certificate",
+        "notFound": "No certificates were found.",
+        "preview": {
+            "online": "Online Exam",
+            "offline": "In-person Exam",
+            "credCode": "Credential Identification Code",
+            "verify": "Verify certificate",
+            "verifyTip": "Open the verification page in a new tab.",
+            "link": "Open credential link",
+            "linkTip": "Open the credential link in a new tab.",
+            "cred": "Credential",
+            "close": "Close preview"
+        },
+        "label": {
+            "tag": "Tag",
+            "company": "Company",
+            "title": "Title",
+            "new": "Newest",
+            "old": "Oldest"
+        },
+        "data": {
+            "tags": {
+                "ai": "AI",
+                "cloud": "Cloud",
+                "ml": "Machine Learning",
+                "cv": "Computer Vision",
+                "nlp": "NLP",
+                "fund": "Fundamentals",
+                "cloudConc": "Cloud Concepts",
+                "arch": "Architecture",
+                "gov": "Governance",
+                "ux": "UX Design",
+                "ui": "UI Design",
+                "ur": "User Research",
+                "wirefr": "Wireframing",
+                "prot": "Prototyping",
+                "fig": "Figma",
+                "dproc": "Design Process",
+                "gdev": "Game Development",
+                "oop": "OOP",
+                "gdes": "Game Design",
+                "spec": "Specialization",
+                "csec": "Cybersecurity",
+                "sec": "Security",
+                "siem": "SIEM",
+                "ids": "IDS",
+                "lin": "Linux",
+                "sql": "SQL",
+                "tdet": "Threat Detection",
+                "risk": "Risk Management",
+                "dtruc": "Data Structures",
+                "dpat": "Design Patterns",
+                "soft": "Software Design",
+                "alg": "Algorithms",
+                "law": "Law",
+                "eth": "Ethics",
+                "reg": "Regulation",
+                "leg": "Legal Tech",
+                "prompt": "Prompt Engineering",
+                "llm": "LLMs",
+                "genAi": "Generative AI",
+                "foundat": "Foundations",
+                "script": "Scripting",
+                "db": "Databases",
+                "dmodel": "Data Modeling",
+                "dret": "Data Retrieval",
+                "webdev": "Web Development",
+                "front": "Frontend",
+                "access": "Accessibility",
+                "resp": "Responsive Design",
+                "sdev": "Software Development",
+                "debug": "Debugging",
+                "dom": "DOM",
+                "func": "Functions",
+                "loop": "Loops",
+                "aut": "Automation",
+                "err": "Error Handling",
+                "mod": "Modules",
+                "webapp": "Web Applications",
+                "sprinc": "Software Principles",
+                "is": "Information Security",
+                "isms": "ISMS",
+                "aud": "Audit",
+                "comp": "Compliance",
+                "deng": "Data Engineering",
+                "pipe": "Pipelines",
+                "etl": "ETL",
+                "perf": "Performance Optimization",
+                "dsci": "Data Science",
+                "gpu": "GPU Computing",
+                "acc": "Acceleration",
+                "dl": "Deep Learning",
+                "nn": "Neural Networks",
+                "eai": "Edge AI",
+                "esys": "Embedded Systems",
+                "vidproc": "Video Processing",
+                "id": "Identity",
+                "cloudsec": "Cloud Security",
+                "prob": "Problem Solving",
+                "api": "API Usage"
+            },
+            "date": {
+                "jan": "January",
+                "feb": "February",
+                "mar": "March",
+                "apr": "April",
+                "may": "May",
+                "jun": "June",
+                "jul": "July",
+                "aug": "August",
+                "sep": "September",
+                "oct": "October",
+                "nov": "November",
+                "dec": "December"
+            },
+            "label": {
+                "cred": "Credential Identification Code",
+                "ser": "Certificate Serial Number"
+            }
+        }
+    },
+
+    "pref": {
+        "contact": "Contact Me",
+        "pageTitle": "Preferences",
+        "pageSubtitle":"How I prefer to work and collaborate",
+        "ctaTitle":"Still have questions?",
+        "ctaDescription": "Want to discuss opportunities, expectations, or collaboration details?",
+        "sal": {
+            "title": "Salary Expectations",
+            "items": {
+                "1": "Competitive and flexible expectations aligned with experience level, business impact, and market standards.",
+                "2": "Open to full-time employment, contract, or freelance collaboration depending on company needs.",
+                "3": "Comfortable taking ownership independently while delivering consistent value with minimal supervision."
+            }
+        },
+        "env": {
+            "title": "Work Environment",
+            "items": {
+                "1": "Remote-first preference with strong experience collaborating effectively across distributed teams.",
+                "2": "Hybrid opportunities are also welcome for the right role and culture fit.",
+                "3": "Comfortable contributing as an individual expert, team member, project owner, or technical lead."
+            }
+        },
+        "loc": {
+            "title": "Location Preferences",
+            "items": {
+                "1": "Open to opportunities in Hungary, across the European Union, or fully international remote teams.",
+                "2": "Relocation within Europe can be considered for the right long-term opportunity.",
+                "3": "Comfortable working across time zones and multicultural environments."
+            }
+        },
+        "role": {
+            "title": "Preferred Roles",
+            "items": {
+                "1": "Interested in Frontend, Angular, Full Stack, Platform, Product Engineering, and Software Development roles.",
+                "2": "Strong fit for dashboard platforms, internal tools, SaaS products, and enterprise applications.",
+                "3": "Particularly motivated by ownership-driven roles in ambitious startups or fast-moving teams."
+            }
+        },
+        "stack": {
+            "title": "Preferred Stack",
+            "items": {
+                "1": "Strongest focus: Python, Java, Angular, TypeScript, JavaScript, responsive UI architecture, scalable frontend systems and Event-Driven architecture.",
+                "2": "Additional experience with .NET/C#, SQL, REST/GraphQL APIs, backend integrations, Docker, Git, GitHub, GitLab, cloud-friendly architectures and Domain-Driven design (DDD).",
+                "3": "Value clean architecture, testing, CI/CD, performance optimization, secure coding, and maintainable systems."
+            }
+        },
+        "team": {
+            "title": "Team Preferences",
+            "items": {
+                "1": "Thrive in transparent, respectful, and high-trust environments with clear communication.",
+                "2": "Appreciate ownership culture, strong engineering standards, and pragmatic decision-making.",
+                "3": "Prefer low-politics teams focused on execution, quality, and shared success."
+            }
+        },
+        "ava": {
+            "title": "Availability",
+            "items": {
+                "1": "Open to interview processes immediately.",
+                "2": "Current transition time is short and flexible depending on agreement.",
+                "3": "Able to start quickly, typically within one week."
+            }
+        },
+        "bene": {
+            "title": "Benefits",
+            "items": {
+                "1": "Value flexible working arrangements and strong home office support.",
+                "2": "Appreciate healthcare, growth opportunities, and continuous learning environments.",
+                "3": "Most motivated by meaningful challenges, long-term stability, and room to grow."
+            }
+        }
+    },
+
+    "home": {
+        "profile": {
+            "1": {
+                "label": "Citizenship",
+                "value": "Hungarian"
+            },
+            "2": {
+                "label": "Birth Date",
+                "value": "07 April 2000"
+            },
+            "3": {
+                "label": "Location",
+                "value": "Debrecen, Hungary (EU)"
+            },
+            "links": {
+                "1": {
+                    "label": "GitHub",
+                    "arialabel": "Open GitHub profile"
+                },
+                "2": {
+                    "label": "Gmail",
+                    "arialabel": "Send email to mezei.lia2000@gmail.com"
+                },
+                "3": {
+                    "label": "LinkedIn",
+                    "arialabel": "Open LinkedIn profile"
+                }
+            },
+            "role": "Software Developer / Platform Engineer",
+            "imageAriaLabel": "Profile image"
+        },
+        "timeline": {
+            "timelineCareer": {
+                "title": "Career"
+            },
+            "timelineEducation": {
+                "title": "Education"
+            },
+            "1": {
+                "time": "August 2014",
+                "title": "English B2 Certification",
+                "desc": "Earned my B2 English certification during the final year of primary school, establishing an early foundation in professional communication and international collaboration."
+            },
+            "2": {
+                "time": "August 2023",
+                "role": "IT Internship",
+                "title": "Berettyóújfalui Gróf Tisza István Hospital",
+                "desc": "Completed university professional practice within the hospital IT department, supporting business systems, inventory platforms, medical software environments, user administration, backup operations, and infrastructure reliability. Gained hands-on experience in secure operations within a highly sensitive healthcare environment."
+            },
+            "3": {
+                "time": "September 2023 - June 2024",
+                "role": "Junior Cybersecurity Content Developer",
+                "title": "Avatao Innovative Learning Ltd",
+                "desc": "Reviewed and improved cybersecurity training materials while fixing technical issues across multiple programming languages including C#, C++, Java, Ruby, JavaScript, Go, and Python. Ensured quality, technical accuracy, and professional standards across educational content."
+            },
+            "4": {
+                "time": "June 2024",
+                "role": "BSc Graduation",
+                "title": "University of Debrecen",
+                "desc": "Successfully completed the BSc in Computer Science (Software Engineering), strengthening foundations in software development, algorithms, systems, and engineering practices."
+            },
+            "5": {
+                "time": "September 2024",
+                "role": "MSc Started",
+                "title": "University of Szeged",
+                "desc": "Started MSc studies in Computer Science (Software Engineering), focusing on advanced software systems, modern technologies, and professional specialization."
+            },
+            "6": {
+                "time": "May 08, 2025",
+                "title": "ISO 27001 Auditor Certification",
+                "desc": "Earned ISO 27001 Auditor certification, expanding expertise in information security governance, risk management, controls, and compliance frameworks."
+            },
+            "7": {
+                "time": "June 2024 - April 2026",
+                "role": "Medior Cybersecurity Content Developer / Platform Engineer",
+                "title": "Avatao Innovative Learning Ltd",
+                "desc": "Promoted to medior role with ownership across development, mentoring, and platform improvement. Built cybersecurity tutorials and challenge systems in multiple technologies, reviewed pull requests, mentored developers, developed backend/frontend features, and led third-party platform integrations."
+            },
+            "8": {
+                "time": "April 2026 - Present",
+                "role": "Freelance Software Developer / Platform Engineer",
+                "desc": "Working independently on software projects including games, security-focused applications, anti-malware solutions, and modern web systems while continuing MSc studies."
+            },
+            "9": {
+                "time": "January 2027",
+                "role": "MSc Graduation (Expected)",
+                "desc": "Expected completion of MSc in Computer Science (Software Engineering)."
+            },
+            "readMore": "Read more",
+            "showLess": "Show less"
+        },
+        "projects": {
+            "title": "Project Overview",
+            "loading": "Loading...",
+            "languages": {
+                "title": "Programming Languages",
+                "center": "language use"
+            },
+            "technologies": {
+                "title": "Technologies",
+                "center": "tech use"
+            },
+            "github": {
+                "title": "GitHub Activity",
+                "center": "public activity"
+            },
+            "label": {
+                "python": "Python",
+                "typescript": "TypeScript / Angular",
+                "javascript": "JavaScript",
+                "java": "Java",
+                "c++": "C++",
+                "c#": "C#",
+                "sql": "SQL",
+                "other": "Other",
+                "angular": "Angular / UI",
+                "flask": "Flask / APIs",
+                "docker": "Docker / Containers",
+                "databases": "Databases",
+                "security": "Security / OAuth",
+                "cicd": "CI/CD / DevOps",
+                "unity": "Unity / Games",
+                "monitoring": "Monitoring",
+                "contributions": "Contributions",
+                "commits": "Commits",
+                "pull": "Pull Requests",
+                "issues": "Issues"
+            },
+            "showcase": {
+                "code": "Preview code",
+                "home": {
+                    "cashmira": {
+                        "title": "Cashmira NetBank",
+                        "date": "May 17, 2025",
+                        "description": "Designed and developed a modern digital banking platform featuring secure authentication, account administration, card controls, transaction management, and administrative workflows. Built with Angular, Node.js, and MongoDB, with focus on clean architecture, responsiveness, and secure financial-style operations."
+                    },
+                    "hangman": {
+                        "title": "Hangman++",
+                        "date": "Dec 13, 2025",
+                        "description": "Built a production-style terminal game project that demonstrates complete software lifecycle ownership from architecture and C++ development to testing, containerization, CI/CD pipelines, automated deployment, metrics exposure, and observability dashboards. Strong focus on engineering discipline and maintainability."
+                    },
+                    "qme": {
+                        "title": "Q'Me Quiz Platform",
+                        "date": "May 22, 2025",
+                        "description": "Created an interactive quiz platform with authentication, leaderboards, personal statistics, difficulty systems, and user-submitted content. Included profanity filtering, data visualization, and scalable backend logic to encourage learning through engagement."
+                    },
+                    "galaxy": {
+                        "title": "Galaxy Dungeon",
+                        "date": "May 22, 2025",
+                        "description": "Developed a fantasy-themed 2D dungeon crawler focused on exploration, combat, and player progression. Built core gameplay systems in Unity using C#, with scalable architecture prepared for map expansion, and boss mechanics."
+                    },
+                    "pebble": {
+                        "title": "Pebble Strategy Game",
+                        "date": "Jul 21, 2023",
+                        "description": "Implemented a strategy board game using JavaFX with MVC architecture, persistent XML save/load functionality, and tested business logic. Emphasized structured OOP design, maintainability, and clean separation of concerns."
+                    }
+                },
+                "work": {
+                    "vanta": {
+                        "title": "Vanta Security Integration",
+                        "description": "Planned, designed, and independently implemented a full third-party Vanta integration to synchronize cybersecurity training completion data with external compliance systems. Developed secure OAuth flows, encrypted credential storage, background synchronization pipelines, admin management UI, retry logic, and stakeholder-ready solution presentation."
+                    },
+                    "frontend": {
+                        "title": "Frontend Platform Development",
+                        "description": "Developed major frontend platform features including role-based access control, organization analytics dashboards, team workflows, messaging systems, certificates, localization support, and responsive UI improvements. Focused heavily on maintainable architecture, clean UX, and scalable enterprise interfaces."
+                    },
+                    "backend": {
+                        "title": "Backend and API Engineering",
+                        "description": "Designed and implemented backend APIs for analytics, user activity tracking, challenge completion statistics, and next-generation training systems. Worked in UseCase-driven architecture with strong validation, clean separation of concerns, and documented service contracts."
+                    },
+                    "framework": {
+                        "title": "Exercise Framework Engineering",
+                        "description": "Enhanced the internal cybersecurity exercise framework by introducing configurable modules, optional runtime services, event-trigger systems, deployment health checks, improved validation rules, and modular architecture upgrades that accelerated content creation workflows."
+                    },
+                    "mentorship": {
+                        "title": "Mentorship and Technical Leadership",
+                        "description": "Mentored international external developers, validated deliverables, reviewed implementations, provided technical guidance, and acted as a bridge between contributors and internal platform standards. Supported engineering quality through structured feedback and integration readiness reviews."
+                    },
+                    "infra": {
+                        "title": "Infrastructure and Resource Governance",
+                        "description": "Improved resource allocation strategies for sandboxed training environments by tuning memory limits, introducing scalable multipliers, and balancing platform stability with performance requirements in orchestrated container environments."
+                    },
+                    "protobuf": {
+                        "title": "Protobuf Library Engineering",
+                        "description": "Extended shared protocol buffer schemas and improved core identification structures to support cleaner entity relationships, better traceability, and consistent inter-service communication."
+                    }
+                },
+                "close": "Close image preview",
+                "tags": {
+                    "fullStackBanking": "Full-stack banking simulator",
+                    "angular17": "Angular 17",
+                    "angularMaterial": "Angular Material",
+                    "node": "Node.js",
+                    "express": "Express.js",
+                    "mongodb": "MongoDB",
+                    "yarn": "Yarn",
+                    "jwtAdmin": "JWT authentication and admin panel",
+                    "cardTransactions": "Card management and secure transactions",
+
+                    "terminalDevops": "Advanced terminal game with DevOps lifecycle",
+                    "cmakeCtest": "CMake / CTest",
+                    "cpp17": "C++17",
+                    "sqlite3": "SQLite3",
+                    "docker": "Docker",
+                    "prometheusGrafana": "Prometheus and Grafana monitoring",
+                    "circleci": "CI/CD with CircleCI",
+                    "ansible": "Ansible",
+                    "nginx": "Nginx",
+
+                    "gamifiedLearning": "Gamified learning platform",
+                    "python3": "Python3",
+                    "flask": "Flask",
+                    "mysql": "MySQL",
+                    "javascript": "JavaScript",
+                    "jwtStats": "JWT login and statistics dashboards",
+                    "ugcModeration": "User-generated content moderation",
+
+                    "dungeonCrawler": "2D dungeon crawler game",
+                    "unity": "Unity",
+                    "csharp": "C#",
+                    "combatProgression": "Combat, traps, progression systems",
+                    "coopSingle": "CO-OP and single player",
+
+                    "boardGame": "Logic-based board game",
+                    "java": "Java",
+                    "javafx": "JavaFX",
+                    "jdom": "JDOM",
+                    "mvc": "MVC architecture",
+                    "xml": "XML persistence",
+                    "unitTesting": "Unit testing",
+
+                    "oauth": "OAuth 2.0",
+                    "python": "Python",
+                    "celery": "Celery",
+                    "encryption": "Encryption",
+                    "apiIntegration": "API Integration",
+                    "architecture": "Architecture",
+
+                    "angular": "Angular",
+                    "typescript": "TypeScript",
+                    "fuse": "Fuse Theme",
+                    "rbac": "RBAC",
+                    "analytics": "Analytics",
+                    "ux": "UX",
+                    "i18n": "i18n",
+
+                    "restApi": "REST API",
+                    "openApi": "OpenAPI",
+                    "validation": "Validation",
+
+                    "yaml": "YAML",
+                    "eventSystems": "Event Systems",
+                    "refactoring": "Refactoring",
+                    "platformEngineering": "Platform Engineering",
+                    "devops": "DevOps",
+
+                    "mentoring": "Mentoring",
+                    "codeReview": "Code Review",
+                    "leadership": "Leadership",
+                    "qa": "QA",
+                    "collaboration": "Collaboration",
+
+                    "kubernetes": "Kubernetes",
+                    "containers": "Containers",
+                    "scaling": "Scaling",
+                    "performance": "Performance",
+                    "reliability": "Reliability",
+
+                    "protobuf": "Protobuf",
+                    "contracts": "Contracts",
+                    "microservices": "Microservices",
+                    "backwardCompatibility": "Backward Compatibility"
+                }
+            }
+        }
+    }
+}

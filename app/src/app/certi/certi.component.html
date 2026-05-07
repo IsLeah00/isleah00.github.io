@@ -1,0 +1,314 @@
+<ng-container *transloco="let t">
+    <div class="flex flex-col gap-6">
+        @if (isLoading) {
+            <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+        }
+
+        <div class="controls-wrap">
+            <div class="grid grid-cols-3 gap-3 lg:grid-cols-4 lg:gap-4 lg:items-start">
+                <div class="col-span-1 lg:col-span-1">
+                    <mat-form-field appearance="outline" class="w-full">
+                        <mat-label>{{ t('certi.sort') }}</mat-label>
+                        <mat-select
+                            [ngModel]="selectedSort"
+                            (ngModelChange)="onSortChange($event)"
+                        >
+                            <mat-option value="title-asc">A-Z</mat-option>
+                            <mat-option value="title-desc">Z-A</mat-option>
+                            <mat-option value="newest">{{ t('certi.label.new') }}</mat-option>
+                            <mat-option value="oldest">{{ t('certi.label.old') }}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+
+                <div class="search-block col-span-2 w-full lg:col-span-3">
+                    <mat-form-field appearance="outline" class="w-full">
+                        <mat-icon matPrefix>search</mat-icon>
+                        <input
+                            #searchInputElement
+                            matInput
+                            [ngModel]="searchInput"
+                            (ngModelChange)="onSearchInputChange($event)"
+                            (keydown)="onSearchKeydown($event)"
+                            [matAutocomplete]="searchAutocomplete"
+                            [placeholder]="t('certi.search')"
+                        />
+                    </mat-form-field>
+
+                    <mat-autocomplete
+                        #searchAutocomplete="matAutocomplete"
+                        class="search-autocomplete-panel"
+                        [displayWith]="displaySearchOption"
+                        (optionSelected)="onSearchOptionSelected($event, searchInputElement)"
+                    >
+                        @for (option of filteredSearchOptions; track trackBySearchOption($index, option)) {
+                            <mat-option [value]="option" class="search-option">
+                                <div class="search-option-content">
+                                    <div class="search-option-main">
+                                        {{ option.value }}
+                                    </div>
+
+                                    <div class="search-option-type">
+                                        {{ getSearchTermTypeLabel(option.type) }}
+                                    </div>
+                                </div>
+                            </mat-option>
+                        }
+                    </mat-autocomplete>
+                </div>
+            </div>
+
+            @if (searchTerms.length > 0) {
+                <div class="search-terms-section">
+                    <mat-chip-set class="search-chips">
+                        @for (term of searchTerms; track trackBySearchTerm($index, term)) {
+                            <mat-chip-row
+                                [removable]="true"
+                                (removed)="removeSearchTerm(term)"
+                            >
+                                <div class="chip-content">
+                                    <span class="chip-main">{{ term.value }}</span>
+                                </div>
+
+                                <button
+                                    matChipRemove
+                                    [matTooltip]="t('certi.removeTerm')"
+                                >
+                                    <mat-icon>close</mat-icon>
+                                </button>
+                            </mat-chip-row>
+                        }
+                    </mat-chip-set>
+                </div>
+            }
+        </div>
+
+        <div class="grid grid-cols-1 gap-6 lg:grid-cols-[280px_minmax(0,1fr)]">
+            <aside class="filters-panel hidden lg:block">
+                <div class="filters-section">
+                    <div class="filters-title-row">
+                        <h3 class="filters-title">{{ t('certi.tag') }}</h3>
+
+                        <button
+                            type="button"
+                            class="clear-button"
+                            (click)="clearAllFilters()"
+                            [matTooltip]="t('certi.clearTag')"
+                        >
+                            {{ t('certi.clear') }}
+                        </button>
+                    </div>
+
+                    <mat-form-field appearance="outline" class="w-full">
+                        <mat-icon matPrefix>search</mat-icon>
+                        <input
+                            matInput
+                            [ngModel]="tagFilterSearch"
+                            (ngModelChange)="onTagFilterSearchChange($event)"
+                            [placeholder]="t('certi.searchTag')"
+                        />
+                    </mat-form-field>
+
+                    <div class="filter-list compact-filter-list">
+                        @for (option of visibleTagOptions; track trackByOptionValue($index, option)) {
+                            <div class="filter-item compact-filter-item">
+                                <mat-checkbox
+                                    [checked]="isTagSelected(option.value)"
+                                    (change)="toggleTag(option.value, $event.checked)"
+                                >
+                                    {{ option.label }}
+                                </mat-checkbox>
+                            </div>
+                        }
+                    </div>
+
+                    @if (shouldShowTagToggle()) {
+                        <button
+                            type="button"
+                            class="show-more-button"
+                            (click)="toggleShowAllTags()"
+                            [matTooltip]="showAllTags ? t('certi.moreTag') : t('certi.lessTag')"
+                        >
+                            <mat-icon>
+                                {{ showAllTags ? 'expand_less' : 'expand_more' }}
+                            </mat-icon>
+                            <span>{{ showAllTags ? t('certi.showLess') : t('certi.showAll') }}</span>
+                        </button>
+                    }
+                </div>
+
+                <mat-divider></mat-divider>
+
+                <div class="filters-section">
+                    <h3 class="filters-title mb-3">{{ t('certi.company') }}</h3>
+
+                    <mat-radio-group
+                        class="single-choice-group"
+                        [ngModel]="selectedCompany"
+                        (ngModelChange)="onCompanyChange($event)"
+                    >
+                        <mat-radio-button
+                            class="single-choice-item"
+                            value="all"
+                        >
+                            {{ t('certi.all') }}
+                        </mat-radio-button>
+
+                        @for (option of visibleCompanyOptions; track trackByOptionValue($index, option)) {
+                            <mat-radio-button
+                                class="single-choice-item"
+                                [value]="option.value"
+                            >
+                                {{ option.label }}
+                            </mat-radio-button>
+                        }
+                    </mat-radio-group>
+
+                    @if (shouldShowCompanyToggle()) {
+                        <button
+                            type="button"
+                            class="show-more-button"
+                            (click)="toggleShowAllCompanies()"
+                            [matTooltip]="showAllCompanies ? t('certi.lessCompany') : t('certi.moreCompany')"
+                        >
+                            <mat-icon>
+                                {{ showAllCompanies ? 'expand_less' : 'expand_more' }}
+                            </mat-icon>
+                            <span>{{ showAllCompanies ? t('certi.showLess') : t('certi.showAll') }}</span>
+                        </button>
+                    }
+                </div>
+
+                <mat-divider></mat-divider>
+
+                <div class="filters-section">
+                    <h3 class="filters-title mb-3">{{ t('certi.type') }}</h3>
+
+                    <mat-radio-group
+                        class="single-choice-group"
+                        [ngModel]="selectedType"
+                        (ngModelChange)="onTypeChange($event)"
+                    >
+                        <mat-radio-button class="single-choice-item" value="all">
+                            {{ t('certi.all') }}
+                        </mat-radio-button>
+
+                        <mat-radio-button class="single-choice-item" value="certificate">
+                            {{ t('certi.certi') }}
+                        </mat-radio-button>
+
+                        <mat-radio-button class="single-choice-item" value="result">
+                            {{ t('certi.result') }}
+                        </mat-radio-button>
+                    </mat-radio-group>
+                </div>
+
+                <mat-divider></mat-divider>
+
+                <div class="filters-section">
+                    <h3 class="filters-title mb-3">{{ t('certi.mode') }}</h3>
+
+                    <mat-radio-group
+                        class="single-choice-group"
+                        [ngModel]="selectedExamMode"
+                        (ngModelChange)="onExamModeChange($event)"
+                    >
+                        <mat-radio-button class="single-choice-item" value="all">
+                            {{ t('certi.all') }}
+                        </mat-radio-button>
+
+                        <mat-radio-button class="single-choice-item" value="online">
+                            {{ t('certi.online') }}
+                        </mat-radio-button>
+
+                        <mat-radio-button class="single-choice-item" value="in-person">
+                            {{ t('certi.offline') }}
+                        </mat-radio-button>
+                    </mat-radio-group>
+                </div>
+            </aside>
+
+            <section class="flex min-w-0 flex-col gap-6">
+                <div class="results-header">
+                    <h2 class="text-3xl font-semibold text-primary-900">{{ t('certi.title') }}</h2>
+                    <span class="results-count">
+                        {{ filteredCertificates.length }} {{ t('certi.items') }}
+                    </span>
+                </div>
+
+                @if (pagedCertificates.length > 0) {
+                    <div class="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
+                        @for (certificate of pagedCertificates; track trackByCertificateId($index, certificate)) {
+                            <article class="certi-card rounded-3xl">
+                                <button
+                                    type="button"
+                                    class="certi-preview-button"
+                                    (click)="openPreview(certificate)"
+                                >
+                                    <div class="certi-preview-media">
+                                        <img
+                                            [src]="certificate.imageUrl"
+                                            [alt]="certificate.title"
+                                            class="certi-preview-image"
+                                        />
+                                    </div>
+                                </button>
+
+                                <div class="certi-card-content">
+                                    <div>
+                                        <h3 class="certi-title">
+                                            {{ certificate.title }}
+                                        </h3>
+                                        <p class="certi-issuer">
+                                            {{ certificate.issuer }}
+                                        </p>
+                                    </div>
+
+                                    <div class="certi-tags">
+                                        @for (tag of certificate.category; track tag) {
+                                            <span class="certi-tag">
+                                                {{ tag }}
+                                            </span>
+                                        }
+
+                                        <span class="certi-tag">
+                                            {{ certificate.isOnline ? t('certi.online') : t('certi.offline') }}
+                                        </span>
+
+                                        <span class="certi-tag">
+                                            {{ certificate.isResult ? t('certi.result') : t('certi.certi') }}
+                                        </span>
+                                    </div>
+
+                                    <div class="certi-footer">
+                                        <span class="certi-date">
+                                            {{ certificate.date }}
+                                        </span>
+                                    </div>
+                                </div>
+                            </article>
+                        }
+                    </div>
+                } @else {
+                    <div class="empty-state flex flex-col items-center justify-center gap-3 py-12 text-center">
+                        <mat-icon class="text-6xl text-neutral-400">error_outline</mat-icon>
+                        <div class="text-base text-neutral-600">
+                            {{ t('certi.notFound') }}
+                        </div>
+                    </div>
+                }
+
+                <div class="paginator-wrap">
+                    <mat-paginator
+                        [length]="filteredCertificates.length"
+                        [pageSize]="pageSize"
+                        [pageIndex]="pageIndex"
+                        [pageSizeOptions]="pageSizeOptions"
+                        [showFirstLastButtons]="true"
+                        (page)="onPageChange($event)"
+                    ></mat-paginator>
+                </div>
+            </section>
+        </div>
+    </div>
+</ng-container>

@@ -1,0 +1,254 @@
+<ng-container *transloco="let t">
+    <section class="project-overview">
+        <div class="project-overview__header">
+            <h2 class="project-overview__title">
+                {{ t('home.projects.title') }}
+            </h2>
+        </div>
+
+        <div class="project-showcase-grid">
+            <article class="project-showcase-card project-showcase-card--work">
+                <div class="project-showcase-card__media">
+                    <button
+                        type="button"
+                        class="project-showcase-card__image-button"
+                        (click)="openImagePreview(selectedWorkProject.images, selectedWorkImageIndex, t(selectedWorkProject.titleKey))"
+                    >
+                        <img
+                            [src]="selectedWorkImage"
+                            [alt]="t(selectedWorkProject.titleKey)"
+                            class="project-showcase-card__image project-showcase-card__image--clickable"
+                        />
+                    </button>
+                </div>
+
+                <div class="project-showcase-card__body">
+                    <div class="project-showcase-card__tabs">
+                        @for (project of workProjects; track project.key; let index = $index) {
+                            <button
+                                type="button"
+                                class="project-tab"
+                                [class.project-tab--active]="selectedWorkProjectIndex === index"
+                                (click)="selectProject('work', index)"
+                            >
+                                {{ index + 1 }}
+                            </button>
+                        }
+                    </div>
+
+                    <h3 class="project-showcase-card__title">
+                        {{ t(selectedWorkProject.titleKey) }}
+                    </h3>
+
+                    <div class="project-showcase-card__tags">
+                        @for (tagKey of selectedWorkProject.tagKeys; track tagKey) {
+                            <span class="project-tag">{{ t(tagKey) }}</span>
+                        }
+                    </div>
+
+                    <p class="project-showcase-card__description">
+                        {{ t(selectedWorkProject.descriptionKey) }}
+                    </p>
+                </div>
+            </article>
+
+            <article class="project-showcase-card project-showcase-card--home">
+                <div class="project-showcase-card__media">
+                    <button
+                        type="button"
+                        class="project-showcase-card__image-button"
+                        (click)="openImagePreview(selectedHomeProject.images, selectedHomeImageIndex, t(selectedHomeProject.titleKey))"
+                    >
+                        <img
+                            [src]="selectedHomeImage"
+                            [alt]="t(selectedHomeProject.titleKey)"
+                            class="project-showcase-card__image project-showcase-card__image--clickable"
+                        />
+                    </button>
+
+                    @if (selectedHomeProject.images.length > 1) {
+                        <button type="button" class="project-image-nav project-image-nav--left" (click)="showPreviousImage('home')">
+                            <mat-icon>keyboard_arrow_left</mat-icon>
+                        </button>
+
+                        <button type="button" class="project-image-nav project-image-nav--right" (click)="showNextImage('home')">
+                            <mat-icon>keyboard_arrow_right</mat-icon>
+                        </button>
+                    }
+                </div>
+
+                <div class="project-showcase-card__body">
+                    <div class="project-showcase-card__tabs">
+                        @for (project of homeProjects; track project.key; let index = $index) {
+                            <button
+                                type="button"
+                                class="project-tab"
+                                [class.project-tab--active]="selectedHomeProjectIndex === index"
+                                (click)="selectProject('home', index)"
+                            >
+                                {{ index + 1 }}
+                            </button>
+                        }
+                    </div>
+
+                    <div class="project-showcase-card__title-row">
+                        <h3 class="project-showcase-card__title">
+                            {{ t(selectedHomeProject.titleKey) }}
+                        </h3>
+
+                        @if (selectedHomeProject.codeUrl) {
+                            <a
+                                [href]="selectedHomeProject.codeUrl"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="project-code-link"
+                            >
+                                {{ t('home.projects.showcase.code') }}
+                            </a>
+                        }
+                    </div>
+
+                    <div class="project-showcase-card__tags">
+                        @for (tagKey of selectedHomeProject.tagKeys; track tagKey) {
+                            <span class="project-tag">{{ t(tagKey) }}</span>
+                        }
+                    </div>
+
+                    @if (selectedHomeProject.dateKey) {
+                        <p class="project-showcase-card__date">
+                            {{ t(selectedHomeProject.dateKey) }}
+                        </p>
+                    }
+
+                    <p class="project-showcase-card__description">
+                        {{ t(selectedHomeProject.descriptionKey) }}
+                    </p>
+                </div>
+            </article>
+        </div>
+
+        <div class="project-stat-grid">
+            @for (chart of charts; track chart.key) {
+                <article class="project-stat-card">
+                    <div class="project-stat-card__header">
+                        <h3 class="project-stat-card__title">
+                            {{ t(chart.titleKey) }}
+                        </h3>
+
+                        @if (chart.isLoading) {
+                            <span class="project-stat-card__badge">
+                                {{ t('home.projects.loading') }}
+                            </span>
+                        }
+                    </div>
+
+                    <div class="project-donut">
+                        <svg class="project-donut__chart" viewBox="0 0 120 120" role="img">
+                            <circle
+                                class="project-donut__base"
+                                cx="60"
+                                cy="60"
+                                r="42"
+                            ></circle>
+
+                            @for (segment of chart.segments; track segment.labelKey) {
+                                <circle
+                                    class="project-donut__segment"
+                                    cx="60"
+                                    cy="60"
+                                    r="42"
+                                    [attr.stroke]="segment.color"
+                                    [attr.stroke-dasharray]="segment.dashArray"
+                                    [attr.stroke-dashoffset]="segment.dashOffset"
+                                >
+                                    <title>
+                                        {{ t(segment.labelKey) }}: {{ segment.value }}{{ chart.valueSuffix }}
+                                    </title>
+                                </circle>
+                            }
+                        </svg>
+
+                        <div class="project-donut__center">
+                            <span class="project-donut__label">
+                                {{ t(chart.centerLabelKey) }}
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="project-stat-card__legend">
+                        @for (segment of chart.segments; track segment.labelKey) {
+                            <div class="project-legend-item">
+                                <span
+                                    class="project-legend-item__dot"
+                                    [style.background]="segment.color"
+                                ></span>
+
+                                <span class="project-legend-item__label">
+                                    {{ t(segment.labelKey) }}
+                                </span>
+
+                                <span class="project-legend-item__value">
+                                    {{ segment.value }}{{ chart.valueSuffix }}
+                                </span>
+                            </div>
+                        }
+                    </div>
+                </article>
+            }
+        </div>
+    </section>
+    @if (isImagePreviewOpen) {
+        <div class="project-image-preview-backdrop">
+            <button
+                type="button"
+                class="project-image-preview-backdrop__close-area"
+                (click)="closeImagePreview()"
+                [attr.aria-label]="t('home.projects.showcase.close')"
+            ></button>
+
+            <div
+                class="project-image-preview"
+                (touchstart)="onPreviewTouchStart($event)"
+                (touchend)="onPreviewTouchEnd($event)"
+            >
+                <button
+                    type="button"
+                    class="project-image-preview__close"
+                    (click)="closeImagePreview()"
+                >
+                    <mat-icon>close</mat-icon>
+                </button>
+
+                @if (hasMultiplePreviewImages) {
+                    <button
+                        type="button"
+                        class="project-image-preview__nav project-image-preview__nav--left"
+                        (click)="showPreviousPreviewImage()"
+                    >
+                        <mat-icon>keyboard_arrow_left</mat-icon>
+                    </button>
+
+                    <button
+                        type="button"
+                        class="project-image-preview__nav project-image-preview__nav--right"
+                        (click)="showNextPreviewImage()"
+                    >
+                        <mat-icon>keyboard_arrow_right</mat-icon>
+                    </button>
+                }
+
+                <img
+                    [src]="previewImageSrc"
+                    [alt]="previewImageAlt"
+                    class="project-image-preview__image"
+                />
+
+                @if (hasMultiplePreviewImages) {
+                    <div class="project-image-preview__counter">
+                        {{ previewImageIndex + 1 }} / {{ previewImages.length }}
+                    </div>
+                }
+            </div>
+        </div>
+    }
+</ng-container>

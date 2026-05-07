@@ -1,0 +1,19 @@
+:host {
+    display: block;
+}
+
+.preview-image-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 1.5rem;
+    max-height: 80vh;
+    overflow: auto;
+}
+
+.preview-image-full {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+}

@@ -1,0 +1,23 @@
+<ng-container *transloco="let t">
+    <h2 mat-dialog-title>{{ t('layout.dialog.title') }}</h2>
+
+    <mat-dialog-content>
+        <p class="mb-3 text-md text-primary-700">
+            {{ t('layout.dialog.question') }}
+        </p>
+
+        <div class="rounded-2xl bg-primary-50 text-primary-700 px-4 py-3 text-md font-medium">
+            mezei.lia2000@gmail.com
+        </div>
+    </mat-dialog-content>
+
+    <mat-dialog-actions align="end">
+        <button mat-button mat-dialog-close>
+            {{ t('layout.dialog.cancel') }}
+        </button>
+
+        <button mat-flat-button color="primary" (click)="sendMail()">
+            {{ t('layout.dialog.open') }}
+        </button>
+    </mat-dialog-actions>
+</ng-container>

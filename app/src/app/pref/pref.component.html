@@ -1,0 +1,72 @@
+<ng-container *transloco="let t">
+    <section class="preferences-page">
+        <div class="preferences-shell">
+            @if (isLoading) {
+                <mat-progress-bar mode="indeterminate" class="preferences-progress"></mat-progress-bar>
+            }
+
+            <header class="hero text-center">
+                <h1 class="hero-title">{{ t('pref.pageTitle') }}</h1>
+                <p class="hero-subtitle">{{ t('pref.pageSubtitle') }}</p>
+            </header>
+
+            <div class="accordion-list">
+                @for (section of sections; track trackBySectionId($index, section)) {
+                    <article
+                        class="accordion-card"
+                        [class.accordion-card-open]="isSectionOpen(section.id)"
+                    >
+                        <button
+                            type="button"
+                            class="accordion-trigger"
+                            [attr.aria-expanded]="isSectionOpen(section.id)"
+                            [attr.aria-controls]="'panel-' + section.id"
+                            (click)="toggleSection(section.id)"
+                        >
+                            <span class="accordion-title">
+                                {{ t(section.titleKey) }}
+                            </span>
+
+                            <mat-icon class="accordion-icon">
+                                {{ isSectionOpen(section.id) ? 'expand_less' : 'expand_more' }}
+                            </mat-icon>
+                        </button>
+
+                        @if (isSectionOpen(section.id)) {
+                            <div class="accordion-content" [id]="'panel-' + section.id">
+                                <ul class="preference-list">
+                                    @for (itemKey of section.itemKeys; track trackByItemKey($index, itemKey)) {
+                                        <li class="preference-item">
+                                            {{ t(itemKey) }}
+                                        </li>
+                                    }
+                                </ul>
+                            </div>
+                        }
+                    </article>
+                }
+            </div>
+
+            <section class="contact-card">
+                <div class="contact-avatars" aria-hidden="true">
+                    <div class="contact-avatar">•</div>
+                    <div class="contact-avatar">KM</div>
+                    <div class="contact-avatar">•</div>
+                </div>
+
+                <h2 class="contact-title">{{ t('pref.ctaTitle') }}</h2>
+                <p class="contact-description">{{ t('pref.ctaDescription') }}</p>
+
+                <button
+                    type="button"
+                    mat-flat-button
+                    color="primary"
+                    class="contact-button"
+                    (click)="openContactDialog()"
+                >
+                    {{ t('pref.contact') }}
+                </button>
+            </section>
+        </div>
+    </section>
+</ng-container>

@@ -1,0 +1,118 @@
+:host {
+    display: block;
+    width: 100%;
+    min-height: 100vh;
+    --glass-bg: rgba(255, 255, 255, 0.18);
+    --glass-border: rgba(31, 49, 71, 0.14);
+    --glass-shadow:
+        0 16px 40px rgba(31, 49, 71, 0.14),
+        0 6px 16px rgba(31, 49, 71, 0.08);
+    --glass-blur: blur(18px) saturate(180%);
+}
+
+.error-glass-bg {
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
+    border-radius: 24px;
+}
+
+.blob {
+    position: absolute;
+    border-radius: 9999px;
+    filter: blur(8px);
+    opacity: 0.8;
+    animation: floatBlob 8s ease-in-out infinite;
+}
+
+.blob-one {
+    top: 1rem;
+    left: 4rem;
+    width: 10rem;
+    height: 10rem;
+    background: rgba(99, 156, 241, 0.18);
+    animation-delay: 0s;
+}
+
+.blob-two {
+    right: 5rem;
+    top: 3rem;
+    width: 8rem;
+    height: 8rem;
+    background: rgba(59, 130, 246, 0.16);
+    animation-delay: 1.5s;
+}
+
+.blob-three {
+    bottom: 1rem;
+    left: 50%;
+    width: 12rem;
+    height: 12rem;
+    background: rgba(85, 109, 247, 0.14);
+    transform: translateX(-50%);
+    animation-delay: 3s;
+}
+
+.floating-dot {
+    position: absolute;
+    z-index: 5;
+    border-radius: 9999px;
+    background: var(--color-primary-600);
+    animation: floatDot 5s ease-in-out infinite;
+}
+
+.dot-one {
+    top: 2rem;
+    left: 8%;
+    width: 0.75rem;
+    height: 0.75rem;
+    animation-delay: 0s;
+}
+
+.dot-two {
+    top: 18%;
+    right: 12%;
+    width: 0.5rem;
+    height: 0.5rem;
+    animation-delay: 1.2s;
+}
+
+.dot-three {
+    bottom: 18%;
+    left: 16%;
+    width: 0.625rem;
+    height: 0.625rem;
+    animation-delay: 2.2s;
+}
+
+.dot-four {
+    right: 18%;
+    bottom: 10%;
+    width: 0.875rem;
+    height: 0.875rem;
+    animation-delay: 3.2s;
+}
+
+@keyframes floatBlob {
+    0%,
+    100% {
+        transform: translateY(0) scale(1);
+    }
+    50% {
+        transform: translateY(-12px) scale(1.04);
+    }
+}
+
+@keyframes floatDot {
+    0%,
+    100% {
+        transform: translateY(0);
+        opacity: 0.45;
+    }
+    50% {
+        transform: translateY(-10px);
+        opacity: 0.9;
+    }
+}

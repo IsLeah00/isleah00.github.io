@@ -1,0 +1,73 @@
+<ng-container *transloco="let t">
+    <div class="flex flex-col gap-4">
+        <div class="flex items-start justify-between gap-4">
+            <div class="p-3">
+                <h2 class="text-2xl font-semibold text-primary-700">{{ data.title }}</h2>
+
+                <p class="mt-1 text-md text-neutral-500">
+                    {{ data.issuer }} • {{ data.date }}
+                </p>
+
+                <p class="mt-1 text-md text-neutral-500">
+                    {{ (data.isOnline ?? true) ? t('certi.preview.online') : t('certi.preview.offline') }}
+                </p>
+
+                @if (data.credentialUrl && data.credentialCode) {
+                    <div class="mt-2 text-md text-neutral-700">
+                        <div class="font-medium text-primary-900">
+                            {{ data.credentialLabel ? t(data.credentialLabel) : t('certi.preview.credCode') }}
+                        </div>
+                        <div class="mt-1 break-all text-neutral-600">
+                            {{ data.credentialCode }}
+                        </div>
+                        <a
+                            [href]="data.credentialUrl"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="mt-2 inline-block text-primary-700 underline"
+                            [matTooltip]="t('certi.preview.verifyTip')"
+                        >
+                            {{ t('certi.preview.verify') }}
+                        </a>
+                    </div>
+                } @else if (data.credentialUrl) {
+                    <a
+                        [href]="data.credentialUrl"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="mt-2 inline-block text-sm text-primary-700 underline break-all"
+                        [matTooltip]="t('certi.preview.linkTip')"
+                    >
+                        {{ t('certi.preview.link') }}
+                    </a>
+                } @else if (data.credentialCode) {
+                    <div class="mt-2 text-sm text-neutral-700">
+                        <div class="font-medium text-primary-900">
+                            {{ data.credentialLabel ? t(data.credentialLabel) : t('certi.preview.cred') }}
+                        </div>
+                        <div class="mt-1 break-all text-neutral-600">
+                            {{ data.credentialCode }}
+                        </div>
+                    </div>
+                }
+            </div>
+
+            <button
+                type="button"
+                mat-icon-button
+                mat-dialog-close
+                [matTooltip]="t('certi.preview.close')"
+            >
+                <mat-icon>close</mat-icon>
+            </button>
+        </div>
+
+        <div class="preview-image-wrap border border-black/10">
+            <img
+                [src]="data.imageUrl"
+                [alt]="data.title"
+                class="preview-image-full"
+            />
+        </div>
+    </div>
+</ng-container>

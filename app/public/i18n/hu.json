@@ -1,0 +1,514 @@
+{
+  "error": {
+    "title": "Hoppá!",
+    "subtitle": "A keresett oldal nem található.",
+    "buttonLabel": "Vissza a főoldalra"
+  },
+  "layout": {
+    "contact": "Kapcsolat",
+    "dialog": {
+      "title": "Kapcsolatfelvétel e-mailben",
+      "question": "Szeretné megnyitni a Gmail alkalmazását, és üzenetet írni az alábbi címre?",
+      "cancel": "Mégse",
+      "open": "Gmail megnyitása"
+    },
+    "home": "Kezdőlap",
+    "preferences": "Preferenciák",
+    "certificates": "Tanúsítványok",
+    "built": "Angular-ral és Tailwind-del készült"
+  },
+  "certi": {
+    "sort": "Rendezés",
+    "search": "Tanúsítványok keresése",
+    "removeTerm": "Keresési feltétel eltávolítása.",
+    "filters": "Keresési feltételek",
+    "tag": "Szűrés címke szerint",
+    "clearTag": "Minden aktív szűrő, keresési feltétel és rendezés törlése.",
+    "clear": "Összes törlése",
+    "searchTag": "Címkék keresése",
+    "moreTag": "Összes elérhető címke megjelenítése.",
+    "lessTag": "Címkelista összecsukása.",
+    "showAll": "Összes megjelenítése",
+    "showLess": "Kevesebb megjelenítése",
+    "company": "Szűrés cég szerint",
+    "all": "Összes",
+    "moreCompany": "Összes elérhető cég megjelenítése.",
+    "lessCompany": "Céglista összecsukása.",
+    "type": "Típus",
+    "mode": "Vizsga módja",
+    "title": "Tanúsítványok",
+    "items": " elem(ek)",
+    "online": "Online",
+    "offline": "Személyes",
+    "result": "Eredmény",
+    "certi": "Tanúsítvány",
+    "notFound": "Nem található tanúsítvány.",
+    "preview": {
+      "online": "Online vizsga",
+      "offline": "Személyes vizsga",
+      "credCode": "Hitelesítési azonosító kód",
+      "verify": "Tanúsítvány ellenőrzése",
+      "verifyTip": "Megnyitja az ellenőrző oldalt új lapon.",
+      "link": "Hitelesítési link megnyitása",
+      "linkTip": "Megnyitja a hitelesítési linket új lapon.",
+      "cred": "Hitelesítő adat",
+      "close": "Bezárás"
+    },
+    "label": {
+      "tag": "Címke",
+      "company": "Cég",
+      "title": "Cím",
+      "new": "Legújabb",
+      "old": "Legrégebbi"
+    },
+    "data": {
+      "tags": {
+        "ai": "MI",
+        "cloud": "Felhő",
+        "ml": "Gépi tanulás",
+        "cv": "Számítógépes vizualizáció",
+        "nlp": "NLP",
+        "fund": "Alapok",
+        "cloudConc": "Felhőalapok",
+        "arch": "Architektúra",
+        "gov": "Irányítás",
+        "ux": "UX tervezés",
+        "ui": "UI tervezés",
+        "ur": "Felhasználói kutatás",
+        "wirefr": "Vázlatkészítés",
+        "prot": "Prototípus készítés",
+        "fig": "Figma",
+        "dproc": "Tervezési folyamat",
+        "gdev": "Játékfejlesztés",
+        "oop": "OOP",
+        "gdes": "Játéktervezés",
+        "spec": "Specializáció",
+        "csec": "Kiberbiztonság",
+        "sec": "Biztonság",
+        "siem": "SIEM",
+        "ids": "IDS",
+        "lin": "Linux",
+        "sql": "SQL",
+        "tdet": "Fenyegetésészlelés",
+        "risk": "Kockázatkezelés",
+        "dtruc": "Adatszerkezetek",
+        "dpat": "Tervezési minták",
+        "soft": "Szoftvertervezés",
+        "alg": "Algoritmusok",
+        "law": "Jog",
+        "eth": "Etika",
+        "reg": "Szabályozás",
+        "leg": "Legal Tech",
+        "prompt": "Prompt engineering",
+        "llm": "LLM-ek",
+        "genAi": "Generatív MI",
+        "foundat": "Alapok",
+        "script": "Szkriptelés",
+        "db": "Adatbázisok",
+        "dmodel": "Adatmodellezés",
+        "dret": "Adatlekérés",
+        "webdev": "Webfejlesztés",
+        "front": "Frontend",
+        "access": "Elérhetőség",
+        "resp": "Reszponzív design",
+        "sdev": "Szoftverfejlesztés",
+        "debug": "Hibakeresés",
+        "dom": "DOM",
+        "func": "Függvények",
+        "loop": "Ciklusok",
+        "aut": "Automatizálás",
+        "err": "Hibakezelés",
+        "mod": "Modulok",
+        "webapp": "Webalkalmazások",
+        "sprinc": "Szoftverelvek",
+        "is": "Információbiztonság",
+        "isms": "ISMS",
+        "aud": "Audit",
+        "comp": "Megfelelőség",
+        "deng": "Adatmérnökség",
+        "pipe": "Pipeline-ok",
+        "etl": "ETL",
+        "perf": "Teljesítményoptimalizálás",
+        "dsci": "Adattudomány",
+        "gpu": "GPU számítás",
+        "acc": "Gyorsítás",
+        "dl": "Mélytanulás",
+        "nn": "Neurális hálók",
+        "eai": "Edge AI",
+        "esys": "Beágyazott rendszerek",
+        "vidproc": "Videófeldolgozás",
+        "id": "Azonosítás",
+        "cloudsec": "Felhőbiztonság",
+        "prob": "Problémamegoldás",
+        "api": "API használat"
+      },
+      "date": {
+        "jan": "Január",
+        "feb": "Február",
+        "mar": "Március",
+        "apr": "Április",
+        "may": "Május",
+        "jun": "Június",
+        "jul": "Július",
+        "aug": "Augusztus",
+        "sep": "Szeptember",
+        "oct": "Október",
+        "nov": "November",
+        "dec": "December"
+      },
+      "label": {
+        "cred": "Hitelesítési azonosító kód",
+        "ser": "Tanúsítvány sorozatszám"
+      }
+    }
+  },
+
+  "pref": {
+    "contact": "Beszélgessünk",
+    "pageTitle": "Preferenciák",
+    "pageSubtitle": "Hogyan szeretek dolgozni és együttműködni",
+    "ctaTitle": "Még vannak kérdései?",
+    "ctaDescription": "Szeretne beszélni lehetőségekről, elvárásokról vagy az együttműködés részleteiről?",
+    "sal": {
+      "title": "Bérigény",
+      "items": {
+          "1": "Versenyképes és rugalmas bérigény, amely a tapasztalatomhoz, az üzleti értékteremtéshez és a piaci viszonyokhoz igazodik.",
+          "2": "Nyitott vagyok teljes munkaidős alkalmazotti, vállalkozói vagy szabadúszó együttműködésre a vállalat igényei szerint.",
+          "3": "Önálló munkavégzés mellett is megbízhatóan, folyamatos értéket teremtve dolgozom minimális iránymutatás mellett."
+      }
+    },
+    "env": {
+      "title": "Munkavégzés Formája",
+      "items": {
+          "1": "Elsősorban remote munkavégzést preferálok.",
+          "2": "Hibrid munkarendű lehetőségek is érdekelnek a megfelelő szerepkör és vállalati kultúra esetén.",
+          "3": "Szívesen dolgozom szakértőként, csapattagként, projektfelelősként vagy technikai vezetőként is."
+      }
+    },
+    "loc": {
+      "title": "Lokáció",
+      "items": {
+          "1": "Nyitott vagyok magyarországi, európai uniós, illetve teljes mértékben nemzetközi remote lehetőségekre.",
+          "2": "A megfelelő hosszú távú lehetőség esetén európai relokáció is szóba jöhet.",
+          "3": "Rugalmasan alkalmazkodom különböző időzónákhoz és nemzetközi munkakörnyezethez."
+      }
+    },
+    "role": {
+      "title": "Preferált Pozíciók",
+      "items": {
+          "1": "Érdekelnek Frontend, Angular, Full Stack, Platform, Product Engineering és Software Development pozíciók.",
+          "2": "Erős illeszkedés dashboard platformokhoz, belső eszközökhöz, SaaS termékekhez és vállalati alkalmazásokhoz.",
+          "3": "Különösen motiválnak a felelősségvállalásra épülő szerepkörök ambiciózus startupoknál vagy gyorsan fejlődő csapatokban."
+      }
+    },
+    "stack": {
+      "title": "Preferált Technológiai Környezet",
+      "items": {
+          "1": "Legerősebb fókuszom: Python, Java, Angular, TypeScript, JavaScript, reszponzív felületfejlesztés, skálázható frontend rendszerek és event-driven architektúra.",
+          "2": "További tapasztalat: .NET/C#, SQL, REST/GraphQL API-k, backend integrációk, Docker, Git, GitHub, GitLab, felhőalapú architektúrák és Domain-Driven Design.",
+          "3": "Kiemelten fontos számomra a tiszta architektúra, tesztelhetőség, CI/CD, teljesítményoptimalizálás, biztonságos fejlesztés és hosszú távon fenntartható rendszerek építése."
+      }
+    },
+    "team": {
+      "title": "Csapatkultúra",
+      "items": {
+          "1": "Jól érzem magam átlátható, tiszteletteljes és magas bizalmi szintű környezetben, egyértelmű kommunikáció mellett.",
+          "2": "Értékelem a felelősségvállalás kultúráját, a magas szakmai színvonalat és a gyakorlatias döntéshozatalt.",
+          "3": "Az olyan csapatokat preferálom, amelyek a minőségre, eredményességre és a közös sikerre fókuszálnak."
+      }
+    },
+    "ava": {
+      "title": "Elérhetőség",
+      "items": {
+          "1": "Azonnal nyitott vagyok interjúfolyamatokra és szakmai egyeztetésekre.",
+          "2": "A rendelkezésre állási idő rövid, megállapodás szerint rugalmas.",
+          "3": "Akár egy héten belüli kezdés is megoldható."
+      }
+    },
+    "bene": {
+      "title": "Juttatások és Lehetőségek",
+      "items": {
+          "1": "Fontos számomra a rugalmas munkavégzés és a megfelelő home office támogatás.",
+          "2": "Értékelem az egészségügyi juttatásokat és a fejlődési lehetőségeket.",
+          "3": "Elsősorban a szakmai kihívások, a hosszú távú stabilitás és a fejlődési lehetőség motiválnak."
+      }
+    }
+  },
+
+  "home": {
+    "profile": {
+      "1": {
+        "label": "Állampolgárság",
+        "value": "Magyar"
+      },
+      "2": {
+        "label": "Születési dátum",
+        "value": "2000. április 07."
+      },
+      "3": {
+        "label": "Helyszín",
+        "value": "Debrecen, Magyarország (EU)"
+      },
+      "links": {
+        "1": {
+          "label": "GitHub",
+          "arialabel": "GitHub-profil megnyitása"
+        },
+        "2": {
+          "label": "Gmail",
+          "arialabel": "E-mail küldése a mezei.lia2000@gmail.com címre"
+        },
+        "3": {
+          "label": "LinkedIn",
+          "arialabel": "LinkedIn-profil megnyitása"
+        }
+      },
+      "role": "Szoftverfejlesztő / Platform Engineer",
+      "imageAriaLabel": "Profilkép"
+    },
+    "timeline": {
+      "timelineCareer": {
+        "title": "Karrier"
+      },
+      "timelineEducation": {
+        "title": "Tanulmányok"
+      },
+      "1": {
+        "time": "2014. augusztus",
+        "title": "Angol B2 nyelvvizsga",
+        "desc": "Az általános iskola utolsó évében megszereztem az angol B2 nyelvvizsgámat, ezzel korán megalapozva a szakmai kommunikációhoz és a nemzetközi együttműködéshez szükséges tudásomat."
+      },
+      "2": {
+        "time": "2023. augusztus",
+        "role": "IT szakmai gyakorlat",
+        "title": "Berettyóújfalui Gróf Tisza István Kórház",
+        "desc": "Egyetemi szakmai gyakorlatomat a kórház IT-osztályán teljesítettem, ahol üzleti rendszerek, leltárkezelő platformok, egészségügyi szoftverkörnyezetek, felhasználókezelés, mentési folyamatok és az infrastruktúra megbízhatóságának támogatásában vettem részt. Gyakorlati tapasztalatot szereztem a biztonságos üzemeltetésben egy kiemelten érzékeny egészségügyi környezetben."
+      },
+      "3": {
+        "time": "2023. szeptember - 2024. június",
+        "role": "Junior Cybersecurity Content Developer",
+        "title": "Avatao Innovative Learning Kft",
+        "desc": "Kiberbiztonsági oktatóanyagokat ellenőriztem és fejlesztettem, miközben több programozási nyelven - köztük C#, C++, Java, Ruby, JavaScript, Go és Python - javítottam technikai problémákat. Biztosítottam az oktatási tartalmak minőségét, technikai pontosságát és szakmai színvonalát."
+      },
+      "4": {
+        "time": "2024. június",
+        "role": "BSc diploma",
+        "title": "Debreceni Egyetem",
+        "desc": "Sikeresen elvégeztem a Programtervező Informatikus BSc szakot, amely megerősítette az alapjaimat a szoftverfejlesztés, algoritmusok, rendszerek és mérnöki gyakorlatok területén."
+      },
+      "5": {
+        "time": "2024. szeptember",
+        "role": "MSc tanulmányok kezdete",
+        "title": "Szegedi Tudományegyetem",
+        "desc": "Megkezdtem MSc tanulmányaimat Programtervező Informatikus szakon, ahol fejlettebb szoftverrendszerekre, modern technológiákra és szakmai specializációra fókuszálok."
+      },
+      "6": {
+        "time": "2025. május 08.",
+        "title": "ISO 27001 Auditor tanúsítvány",
+        "desc": "Megszereztem az ISO 27001 Auditor tanúsítványt, amellyel bővítettem szakértelmemet az információbiztonsági irányítás, kockázatkezelés, kontrollok és megfelelőségi keretrendszerek területén."
+      },
+      "7": {
+        "time": "2024. június - 2026. április",
+        "role": "Medior Cybersecurity Content Developer / Platform Engineer",
+        "title": "Avatao Innovative Learning Kft",
+        "desc": "Medior szerepkörbe léptem elő, ahol fejlesztési, mentorálási és platformfejlesztési felelősségeket vállaltam. Kiberbiztonsági tutorialokat és challenge-rendszereket fejlesztettem különböző technológiákkal, pull requesteket ellenőriztem, fejlesztőket mentoráltam, backend- és frontend-funkciókat készítettem, valamint harmadik féltől származó platformintegrációkat vezettem."
+      },
+      "8": {
+        "time": "2026. április - Jelenleg",
+        "role": "Freelance szoftverfejlesztő / Platform Engineer",
+        "desc": "Önállóan dolgozom szoftverprojekteken, többek között játékokon, biztonságfókuszú alkalmazásokon, anti-malware megoldásokon és modern webes rendszereken, miközben folytatom MSc tanulmányaimat."
+      },
+      "9": {
+        "time": "2027. január",
+        "role": "MSc diploma (várható)",
+        "desc": "A Programtervező Informatikus MSc szak várható befejezése."
+      },
+      "readMore": "Tovább olvasom",
+      "showLess": "Kevesebb mutatása"
+    },
+    "projects": {
+      "title": "Projektáttekintés",
+      "loading": "Betöltés...",
+      "languages": {
+        "title": "Programozási nyelvek",
+        "center": "nyelvhasználat"
+      },
+      "technologies": {
+        "title": "Technológiák",
+        "center": "technológiák"
+      },
+      "github": {
+        "title": "GitHub-aktivitás",
+        "center": "aktivitás"
+      },
+      "label": {
+        "python": "Python",
+        "typescript": "TypeScript / Angular",
+        "javascript": "JavaScript",
+        "java": "Java",
+        "c++": "C++",
+        "c#": "C#",
+        "sql": "SQL",
+        "other": "Egyéb",
+        "angular": "Angular / UI",
+        "flask": "Flask / API-k",
+        "docker": "Docker / Konténerek",
+        "databases": "Adatbázisok",
+        "security": "Security / OAuth",
+        "cicd": "CI/CD / DevOps",
+        "unity": "Unity / Játékok",
+        "monitoring": "Monitoring",
+        "contributions": "Contributions",
+        "commits": "Commitok",
+        "pull": "Pull requestek",
+        "issues": "Issue-k"
+      },
+      "showcase": {
+        "code": "Kód előnézete",
+        "home": {
+          "cashmira": {
+            "title": "Cashmira NetBank",
+            "date": "2025. május 17.",
+            "description": "Megterveztem és fejlesztettem egy modern digitális banki platformot biztonságos autentikációval, számlakezeléssel, kártyavezérléssel, tranzakciókezeléssel és adminisztratív workflow-kkal. Angular, Node.js és MongoDB technológiákkal készült, tiszta architektúrára, reszponzivitásra és biztonságos, pénzügyi jellegű működésre fókuszálva."
+          },
+          "hangman": {
+            "title": "Hangman++",
+            "date": "2025. december 13.",
+            "description": "Egy production-ready terminálos játékprojektet fejlesztettem, amely bemutatja a teljes szoftver-életciklus feletti felelősségvállalást az architektúrától és a C++ fejlesztéstől kezdve a tesztelésen, konténerizáción, CI/CD pipeline-okon és automatizált deploymenten át egészen a metrikák publikálásáig és az observability dashboardokig. Erős fókuszban volt a skálázhatóság és a karbantarthatóság."
+          },
+          "qme": {
+            "title": "Q'Me Quiz Platform",
+            "date": "2025. május 22.",
+            "description": "Létrehoztam egy interaktív quiz platformot autentikációval, leaderboardokkal, személyes statisztikákkal, nehézségi rendszerekkel és felhasználók által beküldött tartalmakkal. Beépítettem profanity filteringet, adatvizualizációt és skálázható backend logikát, hogy az aktív részvételen keresztül támogassa a tanulást."
+          },
+          "galaxy": {
+            "title": "Galaxy Dungeon",
+            "date": "2025. május 22.",
+            "description": "Egy fantasy témájú 2D dungeon crawler játékot fejlesztettem, amely a felfedezésre, harcra és játékosfejlődésre fókuszál. A fő gameplay rendszereket Unityben, C# használatával készítettem el, skálázható architektúrával, amely későbbi pályabővítésekre és boss mechanikákra is fel van készítve."
+          },
+          "pebble": {
+            "title": "Pebble Strategy Game",
+            "date": "2023. július 21.",
+            "description": "Egy stratégiai társasjátékot implementáltam JavaFX használatával, MVC architektúrával, perzisztens XML mentés/betöltés funkcionalitással és tesztelt üzleti logikával. A hangsúly a strukturált OOP designon, a karbantarthatóságon és a felelősségi körök tiszta szétválasztásán volt."
+          }
+        },
+        "work": {
+          "vanta": {
+            "title": "Vanta Security Integration",
+            "description": "Megterveztem, designoltam és önállóan implementáltam egy teljes harmadik féltől származó Vanta-integrációt, amely a teljesített kiberbiztonsági tréningadatokat külső compliance rendszerekkel szinkronizálja. Biztonságos OAuth flow-kat, titkosított credential-tárolást, háttérben futó szinkronizációs pipeline-okat, admin management UI-t, retry logikát és stakeholder-ready megoldásprezentációt készítettem."
+          },
+          "frontend": {
+            "title": "Frontend Platform Development",
+            "description": "Fontos frontend platformfunkciókat fejlesztettem, többek között szerepköralapú hozzáférés-kezelést, szervezeti analitikai dashboardokat, team workflow-kat, messaging rendszereket, tanúsítványokat, lokalizációs támogatást és reszponzív UI-fejlesztéseket. Kiemelten fókuszáltam a karbantartható architektúrára, a letisztult UX-re és a skálázható enterprise felületekre."
+          },
+          "backend": {
+            "title": "Backend and API Engineering",
+            "description": "Backend API-kat terveztem és implementáltam analitikához, felhasználói aktivitáskövetéshez, challenge teljesítési statisztikákhoz és következő generációs tréningrendszerekhez. UseCase-alapú architektúrában dolgoztam, erős validációval, tiszta felelősségi körökkel és dokumentált service contractokkal."
+          },
+          "framework": {
+            "title": "Exercise Framework Engineering",
+            "description": "Továbbfejlesztettem a belső kiberbiztonsági exercise frameworköt konfigurálható modulokkal, opcionális runtime service-ekkel, event-trigger rendszerekkel, deployment health checkekkel, javított validációs szabályokkal és moduláris architektúra-upgrade-ekkel, amelyek gyorsították a content creation workflow-kat."
+          },
+          "mentorship": {
+            "title": "Mentorship and Technical Leadership",
+            "description": "Nemzetközi külsős fejlesztőket mentoráltam, validáltam a deliverable-öket, review-ztam az implementációkat, technikai támogatást adtam, és hidat képeztem a contributorok és a belső platformstandardok között. Strukturált visszajelzéssel és integrációs készültségi review-kkal támogattam az engineering minőséget."
+          },
+          "infra": {
+            "title": "Infrastructure and Resource Governance",
+            "description": "Javítottam a sandboxolt tréningkörnyezetek erőforrás-elosztási stratégiáit memória limitek finomhangolásával, skálázható multiplikátorok bevezetésével, valamint a platformstabilitás és a performance-követelmények egyensúlyozásával orchestrált konténerkörnyezetekben."
+          },
+          "protobuf": {
+            "title": "Protobuf Library Engineering",
+            "description": "Bővítettem a közös Protocol Buffer sémákat és fejlesztettem az alapvető azonosítási struktúrákat, hogy tisztább entitáskapcsolatokat, jobb nyomonkövethetőséget és konzisztens inter-service kommunikációt támogassanak."
+          }
+        },
+        "close": "Kép előnézet bezárása",
+        "tags": {
+          "fullStackBanking": "Full-stack banki szimulátor",
+          "angular17": "Angular 17",
+          "angularMaterial": "Angular Material",
+          "node": "Node.js",
+          "express": "Express.js",
+          "mongodb": "MongoDB",
+          "yarn": "Yarn",
+          "jwtAdmin": "JWT-hitelesítés és admin panel",
+          "cardTransactions": "Kártyakezelés és biztonságos tranzakciók",
+
+          "terminalDevops": "Haladó terminálos játék DevOps-életciklussal",
+          "cmakeCtest": "CMake / CTest",
+          "cpp17": "C++17",
+          "sqlite3": "SQLite3",
+          "docker": "Docker",
+          "prometheusGrafana": "Prometheus- és Grafana-monitoring",
+          "circleci": "CI/CD CircleCI-vel",
+          "ansible": "Ansible",
+          "nginx": "Nginx",
+
+          "gamifiedLearning": "Gamifikált tanulási platform",
+          "python3": "Python3",
+          "flask": "Flask",
+          "mysql": "MySQL",
+          "javascript": "JavaScript",
+          "jwtStats": "JWT-belépés és statisztikai dashboardok",
+          "ugcModeration": "Felhasználók által létrehozott tartalmak moderálása",
+
+          "dungeonCrawler": "2D dungeon crawler játék",
+          "unity": "Unity",
+          "csharp": "C#",
+          "combatProgression": "Harci, csapda- és fejlődési rendszerek",
+          "coopSingle": "CO-OP és single player",
+
+          "boardGame": "Logikaalapú társasjáték",
+          "java": "Java",
+          "javafx": "JavaFX",
+          "jdom": "JDOM",
+          "mvc": "MVC-architektúra",
+          "xml": "XML-perzisztencia",
+          "unitTesting": "Unit testing",
+
+          "oauth": "OAuth 2.0",
+          "python": "Python",
+          "celery": "Celery",
+          "encryption": "Titkosítás",
+          "apiIntegration": "API-integráció",
+          "architecture": "Architektúra",
+
+          "angular": "Angular",
+          "typescript": "TypeScript",
+          "fuse": "Fuse Theme",
+          "rbac": "RBAC",
+          "analytics": "Analytics",
+          "ux": "UX",
+          "i18n": "i18n",
+
+          "restApi": "REST API",
+          "openApi": "OpenAPI",
+          "validation": "Validáció",
+
+          "yaml": "YAML",
+          "eventSystems": "Event rendszerek",
+          "refactoring": "Refactoring",
+          "platformEngineering": "Platform Engineering",
+          "devops": "DevOps",
+
+          "mentoring": "Mentorálás",
+          "codeReview": "Code review",
+          "leadership": "Leadership",
+          "qa": "QA",
+          "collaboration": "Együttműködés",
+
+          "kubernetes": "Kubernetes",
+          "containers": "Konténerek",
+          "scaling": "Skálázás",
+          "performance": "Performance",
+          "reliability": "Megbízhatóság",
+
+          "protobuf": "Protobuf",
+          "contracts": "Contractok",
+          "microservices": "Microservice-ek",
+          "backwardCompatibility": "Backward compatibility"
+        }
+      }
+    }
+  }
+}

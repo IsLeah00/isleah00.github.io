@@ -1,0 +1,50 @@
+<div class="flex min-h-[calc(100vh-8rem)] items-center justify-center px-6 py-12">
+    <div
+        class="w-full max-w-3xl rounded-4xl border border-black/5 error-glass-bg p-8 text-center shadow-xl backdrop-blur md:p-12"
+    >
+        <div class="relative mx-auto mb-10 flex h-72 w-full max-w-2xl items-center justify-center overflow-hidden">
+            <div class="blob blob-one"></div>
+            <div class="blob blob-two"></div>
+            <div class="blob blob-three"></div>
+
+            <div
+                class="relative z-10 flex w-full max-w-md flex-col items-center"
+            >
+                <div
+                    class="mb-5 flex h-20 w-20 items-center justify-center rounded-full"
+                >
+                    <mat-progress-spinner
+                        mode="indeterminate"
+                        [diameter]="48"
+                        [strokeWidth]="4"
+                    ></mat-progress-spinner>
+                </div>
+                <div class="mx-auto max-w-2xl">
+                    <h1 class="mb-4 text-4xl font-bold tracking-tight text-neutral-900 md:text-5xl">
+                        {{ resolvedTitle }}
+                    </h1>
+
+                    <p class="mx-auto mb-8 max-w-xl text-lg text-neutral-600">
+                        {{ resolvedSubtitle }}
+                    </p>
+
+                    <div class="flex items-center justify-center gap-3">
+                        <a
+                            mat-flat-button
+                            color="primary"
+                            [routerLink]="buttonLink"
+                            class="!rounded-full !px-6 !py-3"
+                        >
+                            {{ resolvedButtonLabel }}
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <span class="floating-dot dot-one"></span>
+            <span class="floating-dot dot-two"></span>
+            <span class="floating-dot dot-three"></span>
+            <span class="floating-dot dot-four"></span>
+        </div>
+    </div>
+</div>
