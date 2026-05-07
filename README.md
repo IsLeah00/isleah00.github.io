@@ -47,6 +47,7 @@ src/
 ├── core/              # Shared types and data
 ├── styles/            # Global styles and Tailwind setup
 └── index.html         # Main HTML entry point
+```
 
 ## License
 
