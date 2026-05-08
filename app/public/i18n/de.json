@@ -357,10 +357,13 @@
         "cicd": "CI/CD / DevOps",
         "unity": "Unity / Games",
         "monitoring": "Monitoring",
-        "contributions": "Contributions",
-        "commits": "Commits",
-        "pull": "Pull Requests",
-        "issues": "Issues"
+        "2020": "2020",
+        "2021": "2021",
+        "2022": "2022",
+        "2023": "2023",
+        "2024": "2024",
+        "2025": "2025",
+        "2026": "2026"
       },
       "showcase": {
         "code": "Code-Vorschau",

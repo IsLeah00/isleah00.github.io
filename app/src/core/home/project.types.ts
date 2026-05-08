@@ -21,9 +21,16 @@ export interface ProjectChart {
 
 export interface GitHubStats {
     contributions: number;
-    commits: number;
-    pullRequests: number;
-    issues: number;
+    contributionsByYear: GitHubContributionYear[];
+}
+
+export interface GitHubContributionYear {
+    year: number;
+    contributions: number;
+}
+
+export interface GitHubContributionsApiResponse {
+    totalContributions?: number;
 }
 
 export type ProjectGroupKey = 'home' | 'work';

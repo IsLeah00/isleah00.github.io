@@ -160,17 +160,20 @@
                                     [attr.stroke]="segment.color"
                                     [attr.stroke-dasharray]="segment.dashArray"
                                     [attr.stroke-dashoffset]="segment.dashOffset"
-                                >
-                                    <title>
-                                        {{ t(segment.labelKey) }}: {{ segment.value }}{{ chart.valueSuffix }}
-                                    </title>
-                                </circle>
+                                    (pointerenter)="selectChartSegment(chart.key, segment)"
+                                    (pointerleave)="clearSelectedChartSegment(chart.key)"
+                                    (pointerdown)="selectChartSegment(chart.key, segment)"
+                                ></circle>
                             }
                         </svg>
 
                         <div class="project-donut__center">
                             <span class="project-donut__label">
-                                {{ t(chart.centerLabelKey) }}
+                                {{ getChartCenterLabel(chart, t) }}
+                            </span>
+
+                            <span class="project-donut__value">
+                                {{ getChartCenterValue(chart) }}
                             </span>
                         </div>
                     </div>
@@ -209,7 +212,8 @@
             <div
                 class="project-image-preview"
                 (touchstart)="onPreviewTouchStart($event)"
-                (touchend)="onPreviewTouchEnd($event)"
+                (touchmove)="onPreviewTouchMove($event)"
+                (touchend)="onPreviewTouchEnd()"
             >
                 <button
                     type="button"
@@ -237,11 +241,37 @@
                     </button>
                 }
 
-                <img
-                    [src]="previewImageSrc"
-                    [alt]="previewImageAlt"
-                    class="project-image-preview__image"
-                />
+                @if (hasMultiplePreviewImages) {
+                    <div
+                        class="project-image-preview__image-track"
+                        [style.transform]="previewImageTrackTransform"
+                        [style.transition]="previewImageSwipeTransition"
+                    >
+                        <img
+                            [src]="previousPreviewImageSrc"
+                            [alt]="previewImageAlt"
+                            class="project-image-preview__image"
+                        />
+
+                        <img
+                            [src]="previewImageSrc"
+                            [alt]="previewImageAlt"
+                            class="project-image-preview__image"
+                        />
+
+                        <img
+                            [src]="nextPreviewImageSrc"
+                            [alt]="previewImageAlt"
+                            class="project-image-preview__image"
+                        />
+                    </div>
+                } @else {
+                    <img
+                        [src]="previewImageSrc"
+                        [alt]="previewImageAlt"
+                        class="project-image-preview__image"
+                    />
+                }
 
                 @if (hasMultiplePreviewImages) {
                     <div class="project-image-preview__counter">

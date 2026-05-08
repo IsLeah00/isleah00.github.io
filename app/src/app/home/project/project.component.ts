@@ -1,9 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { TranslocoModule } from '@jsverse/transloco';
 import { firstValueFrom } from 'rxjs';
-import { ChartSegment, ChartSegmentInput, GitHubStats, ProjectChart, ProjectGroupKey, ShowcaseProject } from 'core/home/project.types';
+import { ChartSegment, ChartSegmentInput, GitHubContributionsApiResponse, GitHubContributionYear, GitHubStats, ProjectChart, ProjectGroupKey, ShowcaseProject } from 'core/home/project.types';
 import { MatIcon, MatIconModule } from '@angular/material/icon';
 
 @Component({
@@ -59,20 +59,21 @@ export class ProjectComponent implements OnInit, OnDestroy {
             'home.projects.github.center',
             '',
             [
-                { labelKey: 'home.projects.label.contributions', value: 0, color: '#5480b6' },
-                { labelKey: 'home.projects.label.commits', value: 0, color: '#8daace' },
-                { labelKey: 'home.projects.label.pull', value: 0, color: '#436c9d' },
-                { labelKey: 'home.projects.label.issues', value: 0, color: '#c6d5e7' }
+                { labelKey: 'home.projects.label.2020', value: 0, color: '#a9bfda' },
+                { labelKey: 'home.projects.label.2021', value: 0, color: '#8daace' },
+                { labelKey: 'home.projects.label.2022', value: 0, color: '#5480b6' },
+                { labelKey: 'home.projects.label.2023', value: 0, color: '#436c9d' },
+                { labelKey: 'home.projects.label.2024', value: 0, color: '#375881' },
+                { labelKey: 'home.projects.label.2025', value: 0, color: '#2b4564' },
+                { labelKey: 'home.projects.label.2026', value: 0, color: '#1f334a' }
             ],
             true
         )
     ];
 
-    private readonly _githubUsername = 'IsLeah00';
-    private readonly _githubSearchApiUrl = 'https://api.github.com/search';
-    private readonly _githubHeaders = new HttpHeaders({
-        Accept: 'application/vnd.github+json'
-    });
+    private readonly _githubUsername = 'isleah00';
+    private readonly _githubContributionStartYear = 2020;
+    private readonly _githubContributionsApiUrl = 'https://github-contributions-api.deno.dev';
 
     homeProjects: ShowcaseProject[] = [
         {
@@ -268,10 +269,13 @@ export class ProjectComponent implements OnInit, OnDestroy {
     selectedWorkProjectIndex = 0;
     selectedHomeImageIndex = 0;
     selectedWorkImageIndex = 0;
+    selectedChartSegments: Record<string, ChartSegment | null> = {};
     isImagePreviewOpen = false;
     previewImageAlt = '';
     previewImages: string[] = [];
     previewImageIndex = 0;
+    previewImageSwipeOffset = 0;
+    previewImageSwipeTransition = '';
 
     private readonly _previewSwipeThreshold = 50;
     private _previewTouchStartX = 0;
@@ -325,6 +329,22 @@ export class ProjectComponent implements OnInit, OnDestroy {
         return this.previewImages.length > 1;
     }
 
+    get previousPreviewImageSrc(): string {
+        return this.previewImages[
+            (this.previewImageIndex - 1 + this.previewImages.length) % this.previewImages.length
+        ] ?? '';
+    }
+
+    get nextPreviewImageSrc(): string {
+        return this.previewImages[
+            (this.previewImageIndex + 1) % this.previewImages.length
+        ] ?? '';
+    }
+
+    get previewImageTrackTransform(): string {
+        return `translateX(calc(-100% + ${this.previewImageSwipeOffset}px))`;
+    }
+
     selectProject(group: ProjectGroupKey, index: number): void {
         if (group === 'home') {
             this.selectedHomeProjectIndex = index;
@@ -357,6 +377,8 @@ export class ProjectComponent implements OnInit, OnDestroy {
         this.previewImages = [];
         this.previewImageIndex = 0;
         this.previewImageAlt = '';
+        this.previewImageSwipeOffset = 0;
+        this.previewImageSwipeTransition = '';
 
         document.body.style.overflow = '';
 
@@ -394,30 +416,100 @@ export class ProjectComponent implements OnInit, OnDestroy {
 
         this._previewTouchStartX = touch.clientX;
         this._previewTouchStartY = touch.clientY;
+        this.previewImageSwipeOffset = 0;
+        this.previewImageSwipeTransition = 'none';
     }
 
-    onPreviewTouchEnd(event: TouchEvent): void {
+    onPreviewTouchEnd(): void {
         if (!this.hasMultiplePreviewImages) {
             return;
         }
 
-        const touch = event.changedTouches[0];
-        const horizontalDistance = touch.clientX - this._previewTouchStartX;
-        const verticalDistance = touch.clientY - this._previewTouchStartY;
+        const horizontalDistance = this.previewImageSwipeOffset;
 
-        if (
-            Math.abs(horizontalDistance) < this._previewSwipeThreshold ||
-            Math.abs(horizontalDistance) < Math.abs(verticalDistance)
-        ) {
+        this.previewImageSwipeTransition = 'transform 0.22s ease';
+
+        if (Math.abs(horizontalDistance) < this._previewSwipeThreshold) {
+            this.previewImageSwipeOffset = 0;
+            this._changeDetectorRef.markForCheck();
             return;
         }
 
         if (horizontalDistance > 0) {
-            this.showPreviousPreviewImage();
+            this.previewImageSwipeOffset = window.innerWidth;
+
+            window.setTimeout(() => {
+                this._updatePreviewImageIndex(-1);
+                this._resetPreviewSwipe();
+            }, 220);
+
             return;
         }
 
-        this.showNextPreviewImage();
+        this.previewImageSwipeOffset = -window.innerWidth;
+
+        window.setTimeout(() => {
+            this._updatePreviewImageIndex(1);
+            this._resetPreviewSwipe();
+        }, 220);
+    }
+
+    onPreviewTouchMove(event: TouchEvent): void {
+        if (!this.hasMultiplePreviewImages) {
+            return;
+        }
+
+        const touch = event.touches[0];
+        const horizontalDistance = touch.clientX - this._previewTouchStartX;
+        const verticalDistance = touch.clientY - this._previewTouchStartY;
+
+        if (Math.abs(horizontalDistance) < Math.abs(verticalDistance)) {
+            return;
+        }
+
+        event.preventDefault();
+
+        this.previewImageSwipeOffset = horizontalDistance;
+        this.previewImageSwipeTransition = 'none';
+
+        this._changeDetectorRef.markForCheck();
+    }
+
+    selectChartSegment(chartKey: string, segment: ChartSegment): void {
+        this.selectedChartSegments = {
+            ...this.selectedChartSegments,
+            [chartKey]: segment
+        };
+    }
+
+    clearSelectedChartSegment(chartKey: string): void {
+        this.selectedChartSegments = {
+            ...this.selectedChartSegments,
+            [chartKey]: null
+        };
+    }
+
+    getChartCenterValue(chart: ProjectChart): string {
+        const selectedSegment = this.selectedChartSegments[chart.key];
+
+        if (!selectedSegment) {
+            return chart.totalLabel;
+        }
+
+        return `${this._getSegmentPercentage(chart, selectedSegment)}%`;
+    }
+
+    getChartCenterLabel(
+        chart: ProjectChart,
+        translate: (key: string) => string
+    ): string {
+        const selectedSegment = this.selectedChartSegments[chart.key];
+
+        if (!selectedSegment) {
+            return translate(chart.centerLabelKey);
+        }
+
+        return translate(selectedSegment.labelKey);
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -432,52 +524,47 @@ export class ProjectComponent implements OnInit, OnDestroy {
     }
 
     private async _fetchGithubStats(): Promise<GitHubStats> {
-        const [commits, pullRequests, issues] = await Promise.all([
-            this._fetchGithubCommitCount(),
-            this._fetchGithubIssueCount(`author:${this._githubUsername} type:pr`),
-            this._fetchGithubIssueCount(`author:${this._githubUsername} type:issue`)
-        ]);
+        const currentYear = new Date().getFullYear();
+        const yearRanges = Array.from(
+            { length: currentYear - this._githubContributionStartYear + 1 },
+            (_, index) => this._githubContributionStartYear + index
+        );
+
+        const contributionsByYear = await Promise.all(
+            yearRanges.map((year) => this._fetchGithubContributionYear(year))
+        );
 
         return {
-            commits,
-            pullRequests,
-            issues,
-            contributions: commits + pullRequests + issues
+            contributionsByYear,
+            contributions: this._sumGithubContributions(contributionsByYear)
         };
     }
 
-    private async _fetchGithubCommitCount(): Promise<number> {
+    private async _fetchGithubContributionYear(year: number): Promise<GitHubContributionYear> {
+        const today = new Date();
+        const currentYear = today.getFullYear();
+
+        const from = `${year}-01-01`;
+        const to = year === currentYear
+            ? this._formatDate(today)
+            : `${year}-12-31`;
+
         const response = await firstValueFrom(
-            this._httpClient.get<{ total_count: number }>(
-                `${this._githubSearchApiUrl}/commits`,
+            this._httpClient.get<GitHubContributionsApiResponse>(
+                `${this._githubContributionsApiUrl}/${this._githubUsername}.json`,
                 {
-                    headers: this._githubHeaders,
                     params: {
-                        q: `author:${this._githubUsername}`,
-                        per_page: 1
+                        from,
+                        to
                     }
                 }
             )
         );
 
-        return response.total_count;
-    }
-
-    private async _fetchGithubIssueCount(query: string): Promise<number> {
-        const response = await firstValueFrom(
-            this._httpClient.get<{ total_count: number }>(
-                `${this._githubSearchApiUrl}/issues`,
-                {
-                    headers: this._githubHeaders,
-                    params: {
-                        q: query,
-                        per_page: 1
-                    }
-                }
-            )
-        );
-
-        return response.total_count;
+        return {
+            year,
+            contributions: Number(response.totalContributions ?? 0)
+        };
     }
 
     private _updateGithubChart(stats: GitHubStats): void {
@@ -489,12 +576,13 @@ export class ProjectComponent implements OnInit, OnDestroy {
 
         githubChart.isLoading = false;
         githubChart.totalLabel = stats.contributions.toString();
-        githubChart.segments = this._buildSegments([
-            { labelKey: 'home.projects.label.contributions', value: stats.contributions, color: '#5480b6' },
-            { labelKey: 'home.projects.label.commits', value: stats.commits, color: '#8daace' },
-            { labelKey: 'home.projects.label.pull', value: stats.pullRequests, color: '#436c9d' },
-            { labelKey: 'home.projects.label.issues', value: stats.issues, color: '#c6d5e7' }
-        ]);
+        githubChart.segments = this._buildSegments(
+            stats.contributionsByYear.map((item, index) => ({
+                labelKey: `home.projects.label.${item.year}`,
+                value: item.contributions,
+                color: this._getGithubContributionYearColor(index)
+            }))
+        );
     }
 
     private _createChart(
@@ -570,6 +658,9 @@ export class ProjectComponent implements OnInit, OnDestroy {
             this.previewImageIndex + step + this.previewImages.length
         ) % this.previewImages.length;
 
+        this.previewImageSwipeOffset = 0;
+        this.previewImageSwipeTransition = '';
+
         this._changeDetectorRef.markForCheck();
     }
 
@@ -599,5 +690,51 @@ export class ProjectComponent implements OnInit, OnDestroy {
                 this._changeDetectorRef.markForCheck();
                 break;
         }
+    }
+
+    private _resetPreviewSwipe(): void {
+        this.previewImageSwipeOffset = 0;
+        this.previewImageSwipeTransition = 'none';
+
+        this._changeDetectorRef.markForCheck();
+    }
+
+    private _getGithubContributionYearColor(index: number): string {
+        const colors = [
+            '#a9bfda',
+            '#8daace',
+            '#5480b6',
+            '#436c9d',
+            '#375881',
+            '#2b4564',
+            '#1f334a'
+        ];
+
+        return colors[index % colors.length];
+    }
+
+        private _sumGithubContributions(contributionsByYear: GitHubContributionYear[]): number {
+        return contributionsByYear.reduce(
+            (total, item) => total + item.contributions,
+            0
+        );
+    }
+
+    private _formatDate(date: Date): string {
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, '0');
+        const day = String(date.getDate()).padStart(2, '0');
+
+        return `${year}-${month}-${day}`;
+    }
+
+    private _getSegmentPercentage(chart: ProjectChart, segment: ChartSegment): number {
+        const total = this._sumSegmentValues(chart.segments);
+
+        if (total === 0) {
+            return 0;
+        }
+
+        return Math.round((segment.value / total) * 100);
     }
 }

@@ -358,10 +358,13 @@
         "cicd": "CI/CD / DevOps",
         "unity": "Unity / Játékok",
         "monitoring": "Monitoring",
-        "contributions": "Contributions",
-        "commits": "Commitok",
-        "pull": "Pull requestek",
-        "issues": "Issue-k"
+        "2020": "2020",
+        "2021": "2021",
+        "2022": "2022",
+        "2023": "2023",
+        "2024": "2024",
+        "2025": "2025",
+        "2026": "2026"
       },
       "showcase": {
         "code": "Kód előnézete",

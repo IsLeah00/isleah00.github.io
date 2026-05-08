@@ -31,11 +31,6 @@ export class HomeComponent {
             valueKey: 'home.profile.1.value'
         },
         {
-            key: 'birthDate',
-            labelKey: 'home.profile.2.label',
-            valueKey: 'home.profile.2.value'
-        },
-        {
             key: 'location',
             labelKey: 'home.profile.3.label',
             valueKey: 'home.profile.3.value'
@@ -68,7 +63,7 @@ export class HomeComponent {
             labelKey: 'home.profile.links.3.label',
             ariaLabelKey: 'home.profile.links.3.arialabel',
             iconPath: 'icons/linkedin.svg',
-            href: 'https://www.linkedin.com/in/korn%C3%A9lia-mezei-632147409/',
+            href: 'https://www.linkedin.com/in/kornelia-mezei/',
             target: '_blank',
             rel: 'noopener noreferrer',
             type: 'external'

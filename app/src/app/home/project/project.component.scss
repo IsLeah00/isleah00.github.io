@@ -242,13 +242,15 @@
 }
 
 .project-donut__segment {
+    cursor: pointer;
     transition:
-        stroke-dasharray 0.3s ease,
-        opacity 0.2s ease;
+        opacity 0.2s ease,
+        stroke-width 0.2s ease;
 }
 
 .project-donut__segment:hover {
-    opacity: 0.82;
+    opacity: 0.85;
+    stroke-width: 18;
 }
 
 .project-donut__center {
@@ -351,11 +353,12 @@
     max-height: 90vh;
 
     border: 1px solid rgba(255, 255, 255, 0.12);
-    border-radius: 1.5rem;
+    border-radius: 0.5rem;
 
     background: rgba(255, 255, 255, 0.08);
 
     overflow: hidden;
+    touch-action: pan-y;
 }
 
 .project-image-preview__nav {
@@ -402,8 +405,16 @@
     transform: translateX(-50%);
 }
 
+.project-image-preview__image-track {
+    display: flex;
+    width: 100%;
+    max-height: 90vh;
+    will-change: transform;
+}
+
 .project-image-preview__image {
     display: block;
+    flex: 0 0 100%;
 
     width: 100%;
     max-height: 90vh;
